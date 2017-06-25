@@ -237,6 +237,26 @@ Comparison on facades dataset:
 | <img src="docs/51-inputs.png" width="256px"> | <img src="docs/51-tensorflow.png" width="256px"> | <img src="docs/51-torch.jpg" width="256px"> | <img src="docs/51-targets.png" width="256px"> |
 | <img src="docs/95-inputs.png" width="256px"> | <img src="docs/95-tensorflow.png" width="256px"> | <img src="docs/95-torch.jpg" width="256px"> | <img src="docs/95-targets.png" width="256px"> |
 
+## Export and use pretrained models
+
+Once you downloaded a pretrained model, you have to export it first before using it.
+
+```
+python pix2pix.py \ 
+  --mode export \
+  --checkpoint cityscapes \
+  --output_dir cityscapes/export
+```
+
+Afterwards, you can use the network for a single image like this.
+
+```
+python server/tools/process-local.py \
+  --model_dir cityscapes/export \
+  --input_file path_to_my_image.png \
+  --output_file path_to_output_image.png
+```
+
 ## Unimplemented Features
 
 The following models have not been implemented:
